@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
-      const response = await fetch("/activities", { cache: "no-store" });
+      const response = await fetch(`/activities?_t=${Date.now()}`, { cache: "no-store" });
       const activities = await response.json();
 
       // Clear loading message
@@ -68,11 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
           <div class="participants-section">
-            <strong>Current Participants:</strong>
-            <ul class="participants-list">
-              ${participantsList}
-            </ul>
-          </div>
+              <h5 class="participants-title">Participants</h5>
+              <ul class="participants-list">
+                ${participantsList}
+              </ul>
+            </div>
         `;
 
         activitiesList.appendChild(activityCard);
